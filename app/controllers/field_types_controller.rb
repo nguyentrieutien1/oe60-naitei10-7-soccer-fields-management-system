@@ -21,7 +21,11 @@ class FieldTypesController < ApplicationController
   private
 
   def has_overlap
+<<<<<<< HEAD
     check_field_overlap = Booking.exists?(start_time: field_type_params[:start_time],
+=======
+    check_field_overlap = Booking.find_by(start_time: field_type_params[:start_time],
+>>>>>>> c05a874 (Complete feature booking field)
                                           field_type_id: field_type_params[:field_type_id])
     return unless check_field_overlap
 
@@ -33,7 +37,10 @@ class FieldTypesController < ApplicationController
     @field_type = FieldType.find_by(id: params[:id])
     return if @field_type
 
+<<<<<<< HEAD
     flash[:danger] = t("field_types.not_found")
+=======
+>>>>>>> c05a874 (Complete feature booking field)
     redirect_to root_path
   end
 
