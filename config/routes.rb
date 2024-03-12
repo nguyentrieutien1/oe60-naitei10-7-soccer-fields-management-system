@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   # Field type path
   resources :field_types, only: %i(show create update)
 
+  # User path
   resources :users
+
+  # Booking history path
+  get "bookings/history", to: "bookings#booking_history", as: "booking_history"
 
 end
