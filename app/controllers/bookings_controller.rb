@@ -27,6 +27,7 @@ class BookingsController < ApplicationController
 
     flash[:danger] =
       @booking.status == "confirmed" ? t("booking.confirmed") : t("booking.canceled")
+    flash[:danger] = t("booking.cannot_cancel")
     redirect_to booking_path
   end
 end
