@@ -19,6 +19,8 @@ en:
   fields:
     title: "Soccer fields list"
     empty: "There's no field type to be displayed"
+    favorite_success: "Favorite successful"
+    favorite_fail: "Favorite fail"
 
   field_types:
     booking_time: "Booking time"
@@ -43,6 +45,7 @@ en:
     email: "Email"
     phone: "Phone number"
     
+
   admin:
     introduce: "This is the admin page"
     dashboard: "Dashboard"

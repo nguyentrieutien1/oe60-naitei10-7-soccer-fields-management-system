@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.1].define(version: 2024_03_13_030854) do
+=======
+ActiveRecord::Schema[7.1].define(version: 2024_03_13_065146) do
+>>>>>>> 8d61546 (Compelte feature mark favorite the field)
   create_table "bookings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "start_time"
     t.string "end_time"
@@ -35,6 +39,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_13_030854) do
     t.index ["parent_comment_id"], name: "index_comments_on_parent_comment_id"
     t.index ["review_id"], name: "index_comments_on_review_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "favorite_field_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "field_type_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["field_type_id"], name: "index_favorite_field_types_on_field_type_id"
+    t.index ["user_id"], name: "index_favorite_field_types_on_user_id"
   end
 
   create_table "field_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -100,6 +113,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_13_030854) do
   add_foreign_key "comments", "comments", column: "parent_comment_id"
   add_foreign_key "comments", "reviews"
   add_foreign_key "comments", "users"
+  add_foreign_key "favorite_field_types", "field_types"
+  add_foreign_key "favorite_field_types", "users"
   add_foreign_key "field_types", "fields"
   add_foreign_key "prices", "field_types"
   add_foreign_key "reviews", "fields"

@@ -19,6 +19,8 @@ vi:
   fields:
     title: "Danh sách sân bóng đá"
     empty: "Không có loại trường nào được hiển thị"
+    favorite_success: "Yêu thích thành công"
+    favorite_fail: "Yêu thích thất bại"
 
   field_types:
     booking_time: "Thời gian đặt sân"
@@ -43,6 +45,7 @@ vi:
     email: "Thư điện tử"
     phone: "Số điện thoại"
     
+
   admin:
     dashboard: "Bảng điều khiển"
 

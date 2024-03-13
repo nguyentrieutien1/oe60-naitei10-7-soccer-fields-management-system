@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include Pagy::Backend
   include TimeHelper
+  included FieldsHelper
 
   before_action :set_locale
 
