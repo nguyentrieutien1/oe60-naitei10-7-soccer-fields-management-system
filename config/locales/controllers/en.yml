@@ -4,3 +4,5 @@ en:
       not_login: "User need require login"
   filed_type:
     overlap: "The soccer field cannot be booked during this time period, please choose another time."
+  booking:
+    cannot_cancel: "Booking is confirmed, you cannot cancel"

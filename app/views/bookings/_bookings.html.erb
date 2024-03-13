@@ -6,6 +6,6 @@
   <td><%= bookings.field_type.field_type_name %></td>
   <td><%= "#{map_with_time_of_day(bookings.field_type.prices).price} #{Settings.CURRENCY}" %></td>
   <td>
-    <%= button_to t("button.delete"), root_path, class: "btn btn-danger" %>
+    <%= button_to t("button.delete"), booking_path(bookings), class: "btn btn-danger", method: :delete %>
   </td>
 </tr>

@@ -38,3 +38,7 @@ en:
 
   users:
     update_title: "Update"
+
+  booking:
+    delete_success: "Booking has been deleted"
+    delete_fail: "Booking fail"

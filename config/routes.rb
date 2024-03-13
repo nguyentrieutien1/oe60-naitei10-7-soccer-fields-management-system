@@ -28,5 +28,5 @@ Rails.application.routes.draw do
 
   # Booking history path
   get "bookings/history", to: "bookings#booking_history", as: "booking_history"
-
+  resources :bookings
 end

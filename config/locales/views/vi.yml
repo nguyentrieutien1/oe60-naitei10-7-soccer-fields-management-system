@@ -38,3 +38,7 @@ vi:
 
   users:
     update_title: "Cập nhật"
+
+  booking:
+    delete_success: "Lịch đặt sân đã bị xóa"
+    delete_fail: "Đặt sân thành công"
