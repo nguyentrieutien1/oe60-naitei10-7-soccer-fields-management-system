@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema[7.1].define(version: 2024_03_13_030854) do
-=======
-ActiveRecord::Schema[7.1].define(version: 2024_03_13_065146) do
->>>>>>> 8d61546 (Compelte feature mark favorite the field)
   create_table "bookings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "start_time"
     t.string "end_time"

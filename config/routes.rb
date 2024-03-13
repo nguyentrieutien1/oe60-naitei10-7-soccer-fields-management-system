@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: :index
   end
+  # Booking history path
+  get "bookings/history", to: "bookings#booking_history", as: "booking_history"
 
   # Booking history path
   resources :bookings
