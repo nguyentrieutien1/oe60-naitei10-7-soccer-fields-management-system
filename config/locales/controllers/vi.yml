@@ -4,3 +4,6 @@ vi:
       not_login: "Người dùng cần đăng nhập"
   filed_type:
     overlap: "Không thể đặt sân bóng trong khoảng thời gian này, vui lòng chọn thời gian khác."
+  booking:
+    confirmed: "Đặt sân đã được xác nhận, bạn không thể hủy"
+    canceled: "Đặt sân bị hủy"
