@@ -2,7 +2,7 @@
 
 class FieldTypesController < ApplicationController
   before_action :logged_in_user, :has_overlap, only: :update
-  before_action :load_field_type, only: :show
+  before_action :load_field_type, :load_reviews, only: :show
 
   def show
     @bookings = @field_type.bookings
@@ -19,6 +19,10 @@ class FieldTypesController < ApplicationController
   end
 
   private
+
+  def load_reviews
+    @reviews = Review.review_records(@field_type.id)
+  end
 
   def has_overlap
     check_field_overlap = Booking.exists?(start_time: field_type_params[:start_time],

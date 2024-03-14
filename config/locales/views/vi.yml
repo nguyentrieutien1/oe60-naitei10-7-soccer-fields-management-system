@@ -52,3 +52,7 @@ vi:
   booking:
     delete_success: "Lịch đặt sân đã bị xóa"
     delete_fail: "Đặt sân thành công"
+
+  review:
+    review_success: "Đánh giá đã được tạo"
+    review_fail: "Đánh giá không thành công"

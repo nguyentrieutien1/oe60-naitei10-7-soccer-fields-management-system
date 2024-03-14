@@ -4,7 +4,6 @@ class CreateFieldTypes < ActiveRecord::Migration[7.1]
       t.string :field_type_name, limit: 50
       t.boolean :is_availible
       t.references :field, null: false, foreign_key: true
-      t.references :price, null: false, foreign_key: true
 
       t.timestamps
     end
