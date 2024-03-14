@@ -44,8 +44,7 @@ en:
     information: "Information"
     email: "Email"
     phone: "Phone number"
-
-
+    
   admin:
     introduce: "This is the admin page"
     dashboard: "Dashboard"

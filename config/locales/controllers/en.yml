@@ -7,3 +7,4 @@ en:
   booking:
     confirmed: "Booking is confirmed, you cannot cancel"
     canceled: "Booking is canceled !"
+    not_your: "This field is not yours, please cancel the correct field"

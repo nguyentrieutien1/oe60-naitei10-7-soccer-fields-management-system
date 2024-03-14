@@ -7,3 +7,4 @@ vi:
   booking:
     confirmed: "Đặt sân đã được xác nhận, bạn không thể hủy"
     canceled: "Đặt sân bị hủy"
+    not_your: "Sân này không phải của bạn, vui lòng hủy đúng sân"
