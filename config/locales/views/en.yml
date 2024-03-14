@@ -44,7 +44,7 @@ en:
     information: "Information"
     email: "Email"
     phone: "Phone number"
-    
+
 
   admin:
     introduce: "This is the admin page"
@@ -53,3 +53,7 @@ en:
   booking:
     delete_success: "Booking has been deleted"
     delete_fail: "Booking fail"
+
+  review:
+    review_success: "Review has been created"
+    review_fail: "Review fail"
