@@ -44,7 +44,7 @@ vi:
     information: "Thông tin cá nhân"
     email: "Thư điện tử"
     phone: "Số điện thoại"
-    
+
 
   admin:
     dashboard: "Bảng điều khiển"
@@ -56,3 +56,7 @@ vi:
   review:
     review_success: "Đánh giá đã được tạo"
     review_fail: "Đánh giá không thành công"
+
+  comment:
+    comment_success: "Đã bình luận"
+    comment_fail: "Bình luận thất bại"

@@ -57,3 +57,7 @@ en:
   review:
     review_success: "Review has been created"
     review_fail: "Review fail"
+
+  comment:
+    comment_success: "Comment has been created"
+    comment_fail: "Comment fail"

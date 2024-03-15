@@ -38,4 +38,7 @@ Rails.application.routes.draw do
 
   # Review field type path
   resources :reviews, only: %i(update create)
+
+  # Comments path
+  resources :comments, only: :create
 end
