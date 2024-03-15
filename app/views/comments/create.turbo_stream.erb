@@ -1,0 +1,4 @@
+<%= turbo_stream.append @dom_id do %>
+  <%= render partial: "comment", locals: { comment: @comment } %>
+<% end %>
+

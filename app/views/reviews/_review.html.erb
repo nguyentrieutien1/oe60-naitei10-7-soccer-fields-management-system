@@ -15,11 +15,20 @@
   </div>
   <h5 class=""><%= review.content %></h5>
 </div>
+
 <div class="col">
   <div class="collapse multi-collapse" id="multiCollapseExample<%= review.id %>">
-    <div class="card card-body">
-      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim
-      keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+    <div id="comment-<%= review.id %>">
+      <%= render partial: "comments/comment", collection: review.comments %>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <%= form_for review, url: comments_path, method: :post do %>
+          <label for="exampleFormControlTextarea1"></label>
+          <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <%= button_to "Comment", comments_path, class: "btn btn-success mt-2 float-right", method: :post, params: { id_replace_dom: "comment-#{review.id}" } %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
