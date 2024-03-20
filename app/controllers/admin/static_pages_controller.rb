@@ -35,6 +35,16 @@ module Admin
         redirect_to root_path
       end
     end
+    def pending
+      if @booking.update(status: :pending)
+        BookingMailer.booking_accepted_email(@booking).deliver_now
+        flash[:success] = t("admin.bookings.success")
+        redirect_to admin_static_pages_path
+      else
+        flash[:danger] = t("admin.bookings.fail")
+        redirect_to root_path
+      end
+    end
 
     def cancel
       respond_to do |format|
