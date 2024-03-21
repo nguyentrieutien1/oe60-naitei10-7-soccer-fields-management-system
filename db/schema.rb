@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_20_121417) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_20_093724) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,6 +39,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_20_121417) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "booking_amounts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "booking_id"
+    t.bigint "price_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "fk_rails_d3c71717c3"
+    t.index ["price_id"], name: "fk_rails_b0c9f2cc07"
+  end
+
   create_table "bookings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "start_time"
     t.string "end_time"
@@ -51,14 +60,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_20_121417) do
     t.bigint "price_id"
     t.index ["field_type_id"], name: "index_bookings_on_field_type_id"
     t.index ["id"], name: "index_bookings_on_id"
-    t.index ["price_id"], name: "index_bookings_on_price_id"
+    t.index ["price_id"], name: "fk_rails_5ebf20ad89"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id", null: false
-    t.bigint "review_id", null: false
+    t.bigint "review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "parent_comment_id"
@@ -78,7 +87,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_20_121417) do
 
   create_table "field_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "field_type_name", limit: 50
-    t.boolean "is_availible", default: true
+    t.boolean "is_availible"
     t.bigint "field_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -99,8 +108,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_20_121417) do
   end
 
   create_table "prices", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", limit: 50
-    t.string "price", limit: 20
+    t.string "name"
+    t.string "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "field_type_id", null: false
@@ -109,13 +118,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_20_121417) do
   end
 
   create_table "reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "rating"
-    t.text "content"
     t.bigint "user_id", null: false
-    t.bigint "field_id", null: false
+    t.bigint "field_type_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["field_id"], name: "index_reviews_on_field_id"
+    t.text "content"
+    t.integer "rating"
+    t.index ["field_type_id"], name: "index_reviews_on_field_type_id"
     t.index ["id"], name: "index_reviews_on_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
@@ -133,11 +142,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_20_121417) do
     t.string "activation_digest"
     t.boolean "activated"
     t.datetime "activated_at"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
     t.index ["id"], name: "index_users_on_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "booking_amounts", "bookings"
+  add_foreign_key "booking_amounts", "prices"
   add_foreign_key "bookings", "field_types"
   add_foreign_key "bookings", "prices"
   add_foreign_key "bookings", "users"
@@ -147,8 +160,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_20_121417) do
   add_foreign_key "favorite_field_types", "field_types"
   add_foreign_key "favorite_field_types", "users"
   add_foreign_key "field_types", "fields"
-  add_foreign_key "fields", "users"
   add_foreign_key "prices", "field_types"
-  add_foreign_key "reviews", "fields"
-  add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "field_types"
+  add_foreign_key "reviews", "users", on_delete: :cascade
 end
