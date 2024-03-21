@@ -30,7 +30,7 @@ en:
     inavailable_time_slots: "Booked fields"
     note: "Rules of the game"
     booking_field_success: "Booking successful"
-    field_infomation: "Field information"
+    field_infomation: "Field information and booking"
     action: "Action"
 
   fields_detail:
@@ -70,6 +70,11 @@ en:
     static_pages:
       accept: "Accept"
       reject: "Reject"
+    statuses:
+      pending: "Pending"
+      confirmed: "Confirmed"
+      canceled: "Canceled"
+    filter: "Filter"
 
   booking:
     delete_success: "Booking deleted"

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 module Admin
   class AdminController < ApplicationController
+    layout "admin"
     prepend_before_action :is_admin
 
     private

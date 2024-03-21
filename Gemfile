@@ -37,7 +37,8 @@ gem "pagy"
 gem "rufus-scheduler"
 
 gem "cancancan"
-
+gem 'caxlsx'
+gem 'caxlsx_rails'
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem "byebug"

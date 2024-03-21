@@ -11,15 +11,28 @@ class FavoriteFieldTypesController < ApplicationController
 
   def create
     handle_error_and_redirect do
-      @favorite = current_user.favorite_field_types.new(field_type_id: params[:field_type_id])
-      respond_to do |format|
-        if @favorite.save
-          format.html { redirect_to field_path, notice: t("fields.favorite_success") }
-        else
-          format.html { redirect_to field_path, notice: t("fields.favorite_fail") }
+      @favorite = FavoriteFieldType.find_by(field_type_id: params[:field_type_id], user_id: current_user.id)
+      if @favorite
+        respond_to do |format|
+          if @favorite.destroy
+            format.html { redirect_to field_path, notice: t("fields.favorite_success") }
+          else
+            format.html { redirect_to field_path, notice: t("fields.favorite_fail") }
+          end
+          format.turbo_stream
         end
-        format.turbo_stream
+      else
+        @favorite = current_user.favorite_field_types.new(field_type_id: params[:field_type_id])
+        respond_to do |format|
+          if @favorite.save
+            format.html { redirect_to field_path, notice: t("fields.favorite_success") }
+          else
+            format.html { redirect_to field_path, notice: t("fields.favorite_fail") }
+          end
+          format.turbo_stream
+        end
       end
+
     end
   end
 

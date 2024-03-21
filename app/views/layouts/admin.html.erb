@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Oe60Naitei107SoccerFieldsManagementSystem</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= turbo_include_tags %>
+</head>
+<body>
+<div class="col-3 m-auto message"><%= render partial: "shared/flash_messages" %></div>
+<aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
+  <i class="uil-bars close-aside d-md-none d-lg-none" data-close="show-side-navigation1"></i>
+  <div class="sidebar-header d-flex justify-content-center align-items-center px-3 py-4">
+    <div class="ms-2">
+      <h5 class="fs-6 mb-0">
+        <a class="text-decoration-none" href="#"><%= current_user.full_name %></a>
+      </h5>
+      <p class="mt-1 mb-0"><%= t("admin.introduce") %></p>
+    </div>
+  </div>
+  <div class="nav_link p-3">
+    <div class="nav_item">
+      <i class="fa-solid fa-house-chimney"></i>
+      <%= link_to t("admin.field_manager"), admin_fields_path, method: :get %>
+    </div>
+  </div>
+  <div class="nav_link p-3">
+    <div class="nav_item">
+      <i class="fa-solid fa-message"></i>
+      <%= link_to "Bookings", admin_static_pages_path, method: :get %>
+    </div>
+  </div>
+</aside>
+<div>
+  <section id="wrapper">
+    <nav class="navbar navbar-expand-md">
+      <div class="container-fluid mx-2">
+        <div class="navbar-header">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggle-navbar" aria-controls="toggle-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="uil-bars text-white"></i>
+          </button>
+          <a class="navbar-brand" href="#"><%= t("booking.static_pages.admin_page") %></a>
+        </div>
+        <div class="collapse navbar-collapse" id="toggle-navbar">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= t("booking.static_pages.settings") %>
+              </a>
+              <div class="dropdown-menu dropdown-menu-left p-2" aria-labelledby="dropdownMenu2">
+                <%= button_to t("booking.log_out"), logout_path, method: :delete %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="p-5">
+      <%= yield %>
+    </div>
+  </section>
+</div>
+</body>
+</html>

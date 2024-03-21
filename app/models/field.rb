@@ -6,7 +6,6 @@ class Field < ApplicationRecord
 
   has_many :field_types
 
-  validates :image, content_type: { in: %w[image/jpeg image/gif image/png], message: I18n.t("model.field.image_invalid") }
 
   scope :sorted_by_name, -> { order :name }
   scope :search_by_name, lambda { |value_search|

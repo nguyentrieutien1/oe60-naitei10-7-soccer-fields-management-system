@@ -2,7 +2,7 @@
 
 module Admin
   class StaticPagesController < Admin::AdminController
-    before_action :bookings, only: :index
+    before_action :bookings, only: %i(index update cancel pending)
     before_action :load_booking, only: %i(update cancel pending)
 
     def index
@@ -22,28 +22,19 @@ module Admin
           format.html { redirect_to admin_static_pages_path, notice: t("admin.bookings.fail") }
         end
         format.turbo_stream
+        bookings_get
+      end
+    end
+    def pending
+      if @booking.update(status: :pending)
+        BookingMailer.booking_accepted_email(@booking).deliver_now
+        flash[:success] = t("admin.bookings.success")
+        redirect_to admin_static_pages_path
+      else
+        flash[:danger] = t("admin.bookings.fail")
+        redirect_to root_path
       end
       bookings_get
-    end
-    def pending
-      if @booking.update(status: :pending)
-        BookingMailer.booking_accepted_email(@booking).deliver_now
-        flash[:success] = t("admin.bookings.success")
-        redirect_to admin_static_pages_path
-      else
-        flash[:danger] = t("admin.bookings.fail")
-        redirect_to root_path
-      end
-    end
-    def pending
-      if @booking.update(status: :pending)
-        BookingMailer.booking_accepted_email(@booking).deliver_now
-        flash[:success] = t("admin.bookings.success")
-        redirect_to admin_static_pages_path
-      else
-        flash[:danger] = t("admin.bookings.fail")
-        redirect_to root_path
-      end
     end
 
     def cancel
@@ -63,6 +54,11 @@ module Admin
 
     def bookings
       @bookings = current_user.fields.joins(field_types: :bookings).select("*")
+
+      @status_filter = params[:status_filter]
+      if @status_filter.present?
+        @bookings = @bookings.where("bookings.status = ?", @status_filter.to_i)
+      end
     end
 
     def load_booking
@@ -74,7 +70,7 @@ module Admin
     end
 
     def bookings_get
-      @pagy, @bookings = pagy(@bookings.includes(:user), items: Settings.PERPAGE_8)
+      @pagy, @bookings = pagy(@bookings, items: Settings.PERPAGE_8)
     end
   end
 end

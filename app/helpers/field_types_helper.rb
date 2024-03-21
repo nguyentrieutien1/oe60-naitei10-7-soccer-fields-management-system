@@ -3,12 +3,19 @@
 module FieldTypesHelper
   def booking_hours
     hours = []
-    24.times do |hour|
-      start_time = "#{hour.to_s.rjust(2, "0")}:00"
-      end_time = "#{(hour + 1).to_s.rjust(2, "0")}:00"
+    current_hour = Time.now.hour + 1
+
+    (24 - (current_hour)).times do |hour|
+      hour_offset = current_hour + hour
+      next if hour_offset < current_hour
+
+      start_time = "#{hour_offset.to_s.rjust(2, "0")}:00"
+      end_time = "#{(hour_offset + 1).to_s.rjust(2, "0")}:00"
+
       booked = @field_types_booked.any? { |booking| booking[:start_time] == start_time && !booking.canceled? }
-      hours << { start_time:, end_time:, booked: }
+      hours << { start_time: start_time, end_time: end_time, booked: booked }
     end
+
     hours
   end
 

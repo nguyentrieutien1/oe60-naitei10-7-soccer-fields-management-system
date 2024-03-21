@@ -17,8 +17,8 @@
         <td><%= field.description %></td>
         <td><%= field.phone_number %></td>
         <td><%= field.address %></td>
-        <td>
-          <%= button_to t("admin.delete"), admin_field_path(field), method: :delete, class: "btn btn-danger" %>
+        <td class="d-flex align-items-center">
+          <%= button_to t("admin.delete"), admin_field_path(field), method: :delete, class: "btn btn-danger mr-3" %>
           <%= link_to t("admin.view_detail") , admin_field_type_path(field), class: "btn btn-danger" %>
         </td>
       </tr>

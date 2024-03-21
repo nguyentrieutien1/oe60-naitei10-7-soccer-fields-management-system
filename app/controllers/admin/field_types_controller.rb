@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 module Admin
   class FieldTypesController < ApplicationController
+    layout "admin"
+
     before_action :load_field, only: %i(show create)
     before_action :load_field_type, only: %i(destroy update)
     before_action :has_booking, only: :destroy
@@ -42,10 +44,10 @@ module Admin
     def update
       if @field_type.update(field_type_params)
         update_prices(params)
-        flash[:success] = t("admin.field_type.update_success")
+        flash[:success] = "Update field type successful"
         redirect_to admin_field_type_path(@field_type.field_id)
       else
-        flash[:danger] = t("admin.field_type.update_fail")
+        flash[:danger] = "Update field type fail"
         render :edit
       end
     end

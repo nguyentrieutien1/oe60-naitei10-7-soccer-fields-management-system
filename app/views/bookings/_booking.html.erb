@@ -1,6 +1,7 @@
 <tr>
   <th scope="row"><%= booking.name %></th>
   <td><%= booking.address %></td>
+  <td><%= "#{booking.created_at.to_time.strftime("%d/%m/%Y")} #{booking.created_at.to_time.strftime("%H:%M")}"%></td>
   <td><%= booking.start_time %></td>
   <td><%= booking.end_time %></td>
   <td><%= booking.field_type_name %></td>
@@ -10,6 +11,10 @@
   </td>
   <td><%= "#{map_with_time_of_day(booking.prices).price} #{Settings.CURRENCY}" %></td>
   <td>
-    <%= button_to t("button.delete"), booking_path(booking), class: "btn btn-danger", method: :delete %>
+    <% if booking.confirmed?%>
+      <button type="button" class="btn btn-danger" disabled>Delete</button>
+    <% else %>
+      <%= button_to t("button.delete"), booking_path(booking), class: "btn btn-danger", method: :delete %>
+    <% end %>
   </td>
 </tr>
