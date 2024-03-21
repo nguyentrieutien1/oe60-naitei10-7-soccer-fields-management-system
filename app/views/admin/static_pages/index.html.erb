@@ -42,6 +42,12 @@
     <section class="statistics mt-4">
       <%== pagy_bootstrap_nav @pagy %>
       <%= link_to "Export to excel", admin_export_excel_index_path(format: :xlsx) %>
+      <div class="dropdown mb-4">
+        <%= form_tag(admin_static_pages_path, method: :get) do %>
+          <%= select_tag :status_filter, options_for_select(Booking.statuses.map { |key, value| [t("admin.statuses.#{key}"), value] }, @status_filter), include_blank: true, class: "form-control" %>
+          <%= submit_tag t("admin.filter"), class: "btn btn-primary" %>
+        <% end %>
+      </div>
       <div class="box d-flex rounded-2 align-items-center mb-4 mt-4">
         <div class="content rounded-3 p-3">
           <ul class="order-list">

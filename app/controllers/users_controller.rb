@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       flash[:success] = I18n.t("model.user.update_success")
       redirect_to @user
     else
-      render root_path
+      redirect_to root_path
     end
   end
 

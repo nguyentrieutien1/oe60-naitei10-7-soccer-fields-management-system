@@ -60,6 +60,7 @@ vi:
     close: "Đóng"
     field:
       create: "Tạo mới"
+    filter: ""
 
   booking:
     delete_success: "Lịch đặt sân đã bị xóa"

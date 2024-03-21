@@ -20,7 +20,7 @@ module Admin
         flash[:success] = t("admin.field.create_success")
         redirect_to admin_fields_path
       else
-        flash.now[:danger] = t("admin.field.create_fail")
+        flash.now[:error] = t("admin.field.create_fail")
         load_user_fields
         render :index
       end

@@ -49,3 +49,5 @@ vi:
     field_type:
       create_success: "Tạo loại sân thành công"
       create_fail: "Tạo loại sân không thành công"
+      update_success: "Sửa loại sân thành công"
+      update_fail: "Sửa loại sân thất bại"

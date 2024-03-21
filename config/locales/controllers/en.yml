@@ -40,4 +40,6 @@ en:
 
     field_type:
       create_success: "Field type created successfully"
-      create_fail: "Failed type to create field"
+      create_fail: "Failed to create field type"
+      update_success: "Field type updated successfully"
+      update_fail: "Field type updated failed"

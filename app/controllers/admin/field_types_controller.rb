@@ -54,7 +54,7 @@ module Admin
 
     def load_field
       id = params[:id] || params[:field_id]
-      @field = Field.find_by(id:)
+      @field = current_user.fields.find_by(id:)
       return if @field
 
       flash[:warning] = t("admin.field.field_not_found")

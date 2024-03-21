@@ -1,17 +1,51 @@
 <%= form_with(model: @field, url: admin_fields_path, method: :post) do |form| %>
   <div>
+    <%= render partial: "shared/errors_valid", locals: { object: @field } %>
     <div class="form-group">
-      <input name="name" type="email" class="form-control" placeholder="Enter name">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control", placeholder: "Enter name" %>
+      <% if @field.errors.has_key?(:name) %>
+        <div class="text-danger">
+          <%= @field.errors[:name].first %>
+        </div>
+      <% end %>
     </div>
     <div class="form-group">
-      <input name="description" type="text" class="form-control" placeholder="Enter description">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: "form-control", placeholder: "Enter description" %>
+      <% if @field.errors.has_key?(:description) %>
+        <div class="text-danger">
+          <%= @field.errors[:description].first %>
+        </div>
+      <% end %>
     </div>
     <div class="form-group">
-      <input name="phone_number" type="number" class="form-control" placeholder="Enter phone number">
+      <%= form.label :phone_number %>
+      <%= form.number_field :phone_number, class: "form-control", placeholder: "Enter phone number" %>
+      <% if @field.errors.has_key?(:phone_number) %>
+        <div class="text-danger">
+          <%= @field.errors[:phone_number].first %>
+        </div>
+      <% end %>
     </div>
     <div class="form-group">
-      <input name="address" type="text" class="form-control" placeholder="Enter address">
+      <%= form.label :address %>
+      <%= form.text_field :address, class: "form-control", placeholder: "Enter address" %>
+      <% if @field.errors.has_key?(:address) %>
+        <div class="text-danger">
+          <%= @field.errors[:address].first %>
+        </div>
+      <% end %>
     </div>
+    <span class="image">
+      <%= form.label :image %>
+      <%= form.file_field :image %>
+      <% if @field.errors.has_key?(:image) %>
+        <div class="text-danger">
+          <%= @field.errors[:image].first %>
+        </div>
+      <% end %>
+    </span>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       <button type="submit" class="btn btn-primary"><%= t("admin.field.create") %></button>
