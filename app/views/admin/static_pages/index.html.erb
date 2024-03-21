@@ -59,10 +59,10 @@
                     <% if booking.status == 1 %>
                       <%= button_to t("admin.static_pages.accept"), admin_static_page_path(booking), method: :patch, class: "dropdown-item" %>
                       <%= button_to t("admin.static_pages.reject"), cancel_admin_static_page_path(booking), method: :patch, class: "dropdown-item" %>
-                      <% elsif booking.status == 2 %>
+                    <% elsif booking.status == 2 %>
                       <%= button_to "Pending", pending_admin_static_page_path(booking), method: :patch, class: "dropdown-item" %>
                       <%= button_to t("admin.static_pages.reject"), cancel_admin_static_page_path(booking), method: :patch, class: "dropdown-item" %>
-                      <% else %>
+                    <% else %>
                       <%= button_to "Pending", pending_admin_static_page_path(booking), method: :patch, class: "dropdown-item" %>
                       <%= button_to t("admin.static_pages.accept"), admin_static_page_path(booking), method: :patch, class: "dropdown-item" %>
                     <%end %>
