@@ -1,11 +1,11 @@
 <%= form_for @user, url: url do |form| %>
   <div class="main">
-    <section class="signup">
-      <div class="container">
+    <section class="signup ">
+      <div class="container border pt-5">
         <%= render partial: "shared/errors_valid", locals: { object: @user } %>
-        <div class="signup-content">
+        <div class="signup-content ">
           <div class="signup-form">
-            <h2 class="form-title"><%= t("registrations.sign_up_title") %></h2>
+            <h2 class="form-title text-black"><%= t("registrations.sign_up_title") %></h2>
             <form method="POST" class="register-form" id="register-form">
               <div class="form-group">
                 <label for="email"><i class="bi bi-arrow-left-right"></i></label>
@@ -38,7 +38,7 @@
           </div>
           <div class="auth signup-image-bgr text-center">
             <img class="rounded mb-3" src="<%= asset_path("sign-up.jpg") %>" alt="Example Image">
-            <%= link_to t("button.login"), signin_path, class: "text-center" %>
+            <%= link_to t("button.login"), signin_path, class: "text-center btn btn-dark" %>
           </div>
         </div>
       </div>

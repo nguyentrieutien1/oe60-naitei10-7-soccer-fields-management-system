@@ -3,7 +3,7 @@
 class CommentsController < ApplicationController
   layout "guest"
 
-  before_action :assign_dom_each_comment, only: :create
+  before_action :logged_in_user, :assign_dom_each_comment, only: :create
 
   def create
     @comment = current_user.comments.new comment_params

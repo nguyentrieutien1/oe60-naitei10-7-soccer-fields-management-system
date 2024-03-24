@@ -7,17 +7,25 @@
       </div>
 
     </div>
-      <ul class="ratingW2 float-right row">
-        <% review.rating.times do |i| %>
-          <li>
-            <div class="star">
-            </div>
-          </li>
-        <% end %>
-      </ul>
+    <ul class="ratingW2 float-right row">
+      <% review.rating.times do |i| %>
+        <li>
+          <div class="star">
+          </div>
+        </li>
+      <% end %>
+    </ul>
   </div>
   <div class="d-flex align-items-center justify-content-between">
     <h5 class=""><%= review.content %></h5>
+    <% if review.comments.count > 0 %>
+      <div class="d-flex align-items-center">
+        <i class="fa-regular fa-comments h5 mr-2"></i>
+        <div class="h5">
+          <%= review.comments.count %>
+        </div>
+      </div>
+    <% end %>
     <div class="">
       <%= time_ago_in_words review.created_at %> ago
     </div>

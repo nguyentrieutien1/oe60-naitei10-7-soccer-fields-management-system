@@ -18,13 +18,13 @@ module Admin
     end
 
     def create
-      @field_type = @field.field_types.build(field_type_params)
+      param = params.permit(:field_type_name, :image)
+      @field_type = @field.field_types.build(param)
       build_prices(params)
-      @field_type.image.attach(field_type_params[:image])
+      @field_type.image.attach(param[:image])
       if @field_type.save
         flash[:success] = t("admin.field_type.create_success")
         redirect_to admin_field_type_path(params[:field_id])
-
       else
         flash[:danger] = t("admin.field_type.create_fail")
         render :new
@@ -41,22 +41,23 @@ module Admin
       end
     end
 
+
     def update
       if @field_type.update(field_type_params)
+        @field_type.image.attach(field_type_params[:image])
         update_prices(params)
-        flash[:success] = "Update field type successful"
+        flash[:success] = "Update field success"
         redirect_to admin_field_type_path(@field_type.field_id)
       else
-        flash[:danger] = "Update field type fail"
+        flash[:danger] = "Update field fail"
         render :edit
       end
     end
-
     private
 
     def load_field
       id = params[:id] || params[:field_id]
-      @field = Field.find_by(id:)
+      @field = current_user.fields.find_by(id:)
       return if @field
 
       flash[:warning] = t("admin.field.field_not_found")
@@ -72,7 +73,7 @@ module Admin
     end
 
     def field_type_params
-      params.permit(:field_type_name, :image)
+      params.require(:field_type).permit(:field_type_name, :image)
     end
 
     def build_prices(params)
@@ -83,10 +84,10 @@ module Admin
     end
 
     def update_prices(prices_params)
-      return unless prices_params && prices_params[:field_type]
+      return unless prices_params
 
       %w(Morning Afternoon Evening).each do |period|
-        price = prices_params[:field_type]["#{period.downcase}_price"]
+        price = prices_params["#{period.downcase}_price"]
         @field_type.prices.find_or_initialize_by(name: period[0]).update(price:)
       end
     end

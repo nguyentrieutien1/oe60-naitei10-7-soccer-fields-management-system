@@ -10,25 +10,27 @@
       <div class="modal-body">
         <%= form_with(model: field_type, url: admin_field_type_path(field_type), method: :put) do |form| %>
           <div class="form-group">
-            <%= form.label :field_type_name %>
-            <%= form.text_field :field_type_name, class: "form-control" %>
-          </div>
-          <% %w(Morning_Price Afternoon_Price Evening_Price).each do |period| %>
             <div class="form-group">
-              <%= form.label "#{period.downcase}", period %>
-              <%= form.text_field "#{period.downcase}", class: "form-control" %>
+              <input name="field_type_name" type="text" class="form-control" placeholder="Enter name">
+            </div>
+          </div>
+          <% %w(Morning Afternoon Evening).each do |period| %>
+            <div class="form-group">
+              <div class="form-group">
+                <input name="<%= "#{period.downcase}_price" %>" type="number" class="form-control" placeholder="<%= "#{period.downcase} price" %>">
+              </div>
             </div>
           <% end %>
-          <span class="image">
-            <%= form.file_field :image %>
+          <span class="image p-0 m-0">
+            <%= form.file_field :image, class: "p-0 m-0"%>
           </span>
-          <%= form.submit "Update", class: "btn btn-primary" %>
-
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t("admin.close") %></button>
+            <%= button_to "Update", admin_field_type_path(field_type), class: "btn btn-primary" %>
+          </div>
         <% end %>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t("admin.close") %></button>
-      </div>
+
     </div>
   </div>
 </div>

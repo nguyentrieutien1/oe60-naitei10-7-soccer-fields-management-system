@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class ReviewsController < ApplicationController
+  before_action :logged_in_user, only: %i(create update)
   def update
     session[:rating] = params[:rating]
   end

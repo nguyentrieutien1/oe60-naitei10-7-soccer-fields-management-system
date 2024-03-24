@@ -1,14 +1,14 @@
 
 
 <div class="p-4">
-  <section class="statistics mt-4 d-flex">
-    <%== pagy_bootstrap_nav @pagy %>
-    <%= link_to "Export to excel", admin_export_excel_index_path(format: :xlsx) %>
-    <div class="dropdown mb-4">
-      <%= form_tag(admin_static_pages_path, method: :get) do %>
-        <%= select_tag :status_filter, options_for_select(Booking.statuses.map { |key, value| [t("admin.statuses.#{key}"), value] }, @status_filter), include_blank: true, class: "form-control" %>
-        <%= submit_tag t("admin.filter"), class: "btn btn-primary" %>
-      <% end %>
+  <section class="statistics ">
+    <div class="d-flex align-items-center justify-content-between">
+        <%= form_tag(admin_static_pages_path, method: :get) do %>
+          <%= select_tag :status_filter, options_for_select(Booking.statuses.map { |key, value| [t("admin.statuses.#{key}"), value] }, @status_filter), include_blank: true, class: "form-control text-white dropdown" %>
+          <%= submit_tag "Filter", class: "btn btn-primary text-white mt-2" %>
+        <% end %>
+      <%== pagy_bootstrap_nav @pagy %>
+
     </div>
     <div class="box d-flex rounded-2 align-items-center mb-4 mt-4">
       <div class="content rounded-3 p-3">
@@ -39,7 +39,12 @@
             </li>
           <% end %>
         </ul>
+        <%= link_to "Export to excel", admin_export_excel_index_path(format: :xlsx), class: "btn btn-success float-right" %>
       </div>
     </div>
   </section>
 </div>
+<script>
+  const status_filter_element = document.querySelector("#status_filter").firstChild
+  status_filter_element.textContent = "Select status"
+</script>

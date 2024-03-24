@@ -10,10 +10,10 @@
       <input name="phone_number" type="number" class="form-control" placeholder="Enter phone number">
     </div>
     <div class="form-group">
-      <input name="address" type="email" class="form-control" placeholder="Enter address">
+      <input name="address" type="text" class="form-control" placeholder="Enter address">
     </div>
-    <span class="image">
-      <%= form.file_field :image %>
+    <span class="image p-0 my-2">
+      <%= form.file_field :image, class: "p-0 m-0"%>
     </span>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

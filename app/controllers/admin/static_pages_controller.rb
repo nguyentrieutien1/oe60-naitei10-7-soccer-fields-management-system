@@ -25,6 +25,7 @@ module Admin
         bookings_get
       end
     end
+
     def pending
       if @booking.update(status: :pending)
         BookingMailer.booking_accepted_email(@booking).deliver_now
@@ -40,7 +41,7 @@ module Admin
     def cancel
       respond_to do |format|
         if @booking.update(status: :canceled)
-          BookingMailer.booking_accepted_email(@booking).deliver_now
+          BookingMailer.booking_rejected_email(@booking).deliver_now
           format.html { redirect_to admin_static_pages_path, notice: t("admin.cancel.success") }
         else
           format.html { redirect_to admin_static_pages_path, notice: t("admin.cancel.fail") }
@@ -53,9 +54,10 @@ module Admin
     private
 
     def bookings
+      session[:status_filter] = params[:status_filter]
       @bookings = current_user.fields.joins(field_types: :bookings).select("*")
 
-      @status_filter = params[:status_filter]
+      @status_filter = session[:status_filter]
       if @status_filter.present?
         @bookings = @bookings.where("bookings.status = ?", @status_filter.to_i)
       end

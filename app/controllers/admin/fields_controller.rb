@@ -56,7 +56,7 @@ module Admin
     end
 
     def is_booking
-      return if @field.field_types.flat_map(&:bookings).empty?
+      return if @field.field_types.flat_map(&:bookings).select {|booking| booking.status == 1 || booking.status == 2 }.empty?
 
       flash[:danger] = t("admin.field.can_destroy")
       redirect_to admin_fields_path

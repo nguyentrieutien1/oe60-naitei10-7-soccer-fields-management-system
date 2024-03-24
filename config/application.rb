@@ -17,12 +17,11 @@ module Oe60Naitei107SoccerFieldsManagementSystem
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
-    config.hosts << "0e67-2405-4802-95f1-23de-7082-38fe-ae8e-12e.ngrok-free.app"
-    config.hosts << "0e67-2405-4802-95f1-23de-7082-38fe-ae8e-12e.ngrok-free.app"
-    config.hosts << "localhost:3000"
+    config.hosts << "e3f6-2405-4802-95f1-23de-6e58-e4f3-f5ce-7e8f.ngrok-free.app"
+    config.hosts << "e3f6-2405-4802-95f1-23de-6e58-e4f3-f5ce-7e8f.ngrok-free.app"
     config.i18n.available_locales = %I[en vi]
     config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}")]
-    config.i18n.default_locale = :vi
+    config.i18n.default_locale = :en
     config.generators do |g|
       g.template_engine :erb, turbo_stream: true
     end

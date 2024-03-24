@@ -4,7 +4,7 @@ class Field < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  has_many :field_types
+  has_many :field_types, dependent: :destroy
 
 
   scope :sorted_by_name, -> { order :name }

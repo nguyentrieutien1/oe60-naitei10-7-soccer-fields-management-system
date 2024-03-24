@@ -1,14 +1,11 @@
 <div class="col-md-4 p-2">
   <div class="post-entry">
     <%= link_to field_path(field) do %>
-      <img src="<%= asset_path("img_1.jpg") %>" alt="Image" class="img-fluid rounded">
+      <%= image_tag field.image if field.image.attached? %>
       <div class="caption">
         <div class="caption-inner">
           <h3 class="mb-3"><%= field.name %></h3>
           <div class="author d-flex align-items-center">
-            <div class="img mb-2 mr-3">
-              <img src="<%= asset_path("img_1.jpg") %>" alt="Image" class="img-fluid rounded-circle">
-            </div>
             <div class="text">
               <h4>
                 <%= field.address %>

@@ -2,6 +2,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <h5 class="modal-title text-black" id="exampleModalLongTitle">Create new field type</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -9,22 +10,26 @@
       <div class="modal-body">
         <%= form_with(model: @field_type, url: admin_field_types_path(field_id: @field.id), method: :post) do |form| %>
           <div class="form-group">
-            <%= form.label :field_type_name %>
-            <%= form.text_field :field_type_name, class: "form-control" %>
+            <div class="form-group">
+              <input name="field_type_name" type="text" class="form-control" placeholder="Enter name">
+            </div>
           </div>
           <% %w(Morning Afternoon Evening).each do |period| %>
             <div class="form-group">
-              <%= form.label "#{period.downcase}_price", t("admin.fields.#{period.downcase}_price") %>
-              <%= form.text_field "#{period.downcase}_price", class: "form-control" %>
+              <div class="form-group">
+                <input name="<%= "#{period.downcase}_price" %>" type="number" class="form-control" placeholder="<%= "#{period.downcase} price" %>">
+              </div>
             </div>
           <% end %>
-          <span class="image">
+          <span class="image p-0 m-0">
             <%= form.file_field :image %>
           </span>
-          <%= form.submit t("admin.field.create"), class: "btn btn-primary" %>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t("admin.close") %></button>
+            <button type="submit" class="btn btn-primary">Create</button>
+          </div>
         <% end %>
       </div>
-      <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t("admin.close") %></button>
     </div>
   </div>
 </div>

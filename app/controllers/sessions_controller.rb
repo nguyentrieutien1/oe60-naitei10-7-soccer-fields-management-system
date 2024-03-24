@@ -11,7 +11,11 @@ class SessionsController < ApplicationController
     forwarding_url = session[:forwarding_url]
     reset_session
     log_in @user
-    redirect_to forwarding_url || root_path, status: :see_other
+    if @user.admin?
+      redirect_to forwarding_url || admin_static_pages_path, status: :see_other
+    else
+      redirect_to forwarding_url || root_path, status: :see_other
+    end
   end
 
   def destroy

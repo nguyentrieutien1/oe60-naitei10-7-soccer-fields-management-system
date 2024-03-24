@@ -1,6 +1,7 @@
 wb = xlsx_package.workbook
-wb.add_worksheet(name: "Buttons") do |sheet|
-  @@bookings.each do |button|
-    sheet.add_row [button.id]
+wb.add_worksheet(name: "Bookings") do |sheet|
+sheet.add_row ["Booking ID" ,"Address" ,"Booked date", "Status", "Start time", "End time", "Field type name"]
+  @bookings.each do |booking|
+    sheet.add_row [booking.id, booking.address, booking.booked_date, booking.status, booking.start_time, booking.end_time, booking.field_type_name]
   end
 end
