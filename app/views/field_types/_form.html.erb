@@ -1,0 +1,19 @@
+<%= form_for @field_type, url: reviews_path, method: :post, data: { turbo_stream: true } do %>
+  <input id="selected" name="field_type_id" type="hidden" value="<%= @field_type.id %>"/>
+  <input id="selected" name="field_type_id" type="hidden" value="<%= @field_type.id %>"/>
+  <label for="exampleFormControlTextarea1"></label>
+  <textarea class="form-control text-white border-success" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
+  <button type="submit" class="btn btn-success my-3 float-right" id="create-review"><%= t("button.reviews") %></button>
+<% end %>
+<script>
+    setTimeout(() => {
+        const create_review_btn = document.querySelector("#create-review")
+        const review_container = document.querySelector("#review");
+        create_review_btn.addEventListener("click", () => {
+            setTimeout(() => {
+                console.log(review_container)
+                review_container.scrollTop = review_container.scrollHeight
+            }, 100)
+        })
+    }, 1000)
+</script>

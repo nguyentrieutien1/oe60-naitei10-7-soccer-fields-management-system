@@ -1,3 +1,10 @@
-<%= turbo_stream.append @dom_id do %>
+<%= turbo_stream.append "comment-#{@dom_id}" do %>
   <%= render @comment %>
+<% end %>
+
+<%= turbo_stream.update "review-count-#{@dom_id}" do %>
+  <i class="fa-regular fa-comments h5 mr-2"></i>
+  <div class="h5">
+    <%= @review.comments.count %>
+  </div>
 <% end %>

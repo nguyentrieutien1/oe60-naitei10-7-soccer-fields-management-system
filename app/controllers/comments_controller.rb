@@ -3,12 +3,14 @@
 class CommentsController < ApplicationController
   layout "guest"
 
-  before_action :logged_in_user, :assign_dom_each_comment, only: :create
+  before_action :logged_in_user, :assign_dom_each_comment, :load_review, only: :create
+  after_action :load_review, only: :create
 
   def create
     @comment = current_user.comments.new comment_params
     respond_to do |format|
       if @comment.save
+        @review.comments << @comment
         format.html { redirect_to field_path, notice: t("comment.comment_success") }
       else
         format.html { redirect_to field_path, notice: t("comment.comment_fail") }
@@ -19,6 +21,9 @@ class CommentsController < ApplicationController
 
   private
 
+  def load_review
+    @review = Review.find_by(id: params[:review_id])
+  end
   def assign_dom_each_comment
     @dom_id = params[:dom_id]
   end

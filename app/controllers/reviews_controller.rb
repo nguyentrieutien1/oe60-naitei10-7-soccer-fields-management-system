@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class ReviewsController < ApplicationController
-  before_action :logged_in_user, only: %i(create update)
+  before_action :logged_in_user, :booking_params, :load_field_type, only: %i(create update)
+
   def update
     session[:rating] = params[:rating]
   end
@@ -16,5 +17,19 @@ class ReviewsController < ApplicationController
       end
       format.turbo_stream
     end
+  end
+
+  private
+
+  def booking_params
+    params.permit :start_time, :end_time, :field_type_id, :price_id
+  end
+
+  def load_field_type
+    @field_type = FieldType.find_by(id: params[:field_type_id])
+    return if @field_type
+
+    flash[:danger] = t("field_types.not_found")
+    redirect_to root_path
   end
 end

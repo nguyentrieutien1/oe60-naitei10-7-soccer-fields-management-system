@@ -19,11 +19,14 @@
   <div class="d-flex align-items-center justify-content-between">
     <h5 class=""><%= review.content %></h5>
     <% if review.comments.count > 0 %>
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center" id="review-count-<%=review.id%>">
         <i class="fa-regular fa-comments h5 mr-2"></i>
         <div class="h5">
           <%= review.comments.count %>
         </div>
+      </div>
+      <%else %>
+      <div class="d-flex align-items-center" id="review-count-<%=review.id%>">
       </div>
     <% end %>
     <div class="">
@@ -42,7 +45,7 @@
           <label for="exampleFormControlTextarea1"></label>
           <textarea name="content" class="form-control text-white" id="exampleFormControlTextarea1" rows="3"></textarea>
           <input id="selected" name="review_id" type="hidden" value="<%= review.id %>"/>
-          <input id="selected" name="dom_id" type="hidden" value="comment-<%= review.id %>"/>
+          <input id="selected" name="dom_id" type="hidden" value="<%= review.id %>"/>
           <button type="submit" class="btn btn-success mt-2 float-right"><%= t("button.comment") %></button>
         <% end %>
       </div>

@@ -1,3 +1,7 @@
+<%= turbo_stream.update "flash-message" do %>
+  <%= render partial: "shared/flash_messages"%>
+<% end %>
 <%= turbo_stream.update "booking" do %>
   <%= render(@bookings) || t("fields.empty") %>
 <% end %>
+
