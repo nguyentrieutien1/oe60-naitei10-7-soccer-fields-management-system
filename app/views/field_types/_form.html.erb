@@ -2,7 +2,11 @@
   <input id="selected" name="field_type_id" type="hidden" value="<%= @field_type.id %>"/>
   <input id="selected" name="field_type_id" type="hidden" value="<%= @field_type.id %>"/>
   <label for="exampleFormControlTextarea1"></label>
-  <textarea class="form-control text-white border-success" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
+  <div class="position-relative">
+    <div class="entering d-none h5 text-white">Entering...</div>
+    <textarea class="form-control text-white border-success" id="review-input" rows="3" name="content">
+  </textarea>
+  </div>
   <button type="submit" class="btn btn-success my-3 float-right" id="create-review"><%= t("button.reviews") %></button>
 <% end %>
 <script>
@@ -14,6 +18,20 @@
                 console.log(review_container)
                 review_container.scrollTop = review_container.scrollHeight
             }, 100)
+        })
+
+        const review_input = document.querySelector("#review-input");
+        const spinner = document.querySelector(".entering")
+        review_input.addEventListener("keyup", function (event) {
+            const {value} = event.target
+            if(value.length > 0) {
+                spinner.classList.remove("d-block")
+                spinner.classList.add("d-block")
+            }
+            else {
+                spinner.classList.add("d-block")
+                spinner.classList.remove("d-block")
+            }
         })
     }, 1000)
 </script>
