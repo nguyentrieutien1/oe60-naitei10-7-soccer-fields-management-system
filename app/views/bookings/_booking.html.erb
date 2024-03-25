@@ -1,6 +1,7 @@
 <tr>
   <th scope="row"><%= booking.name %></th>
   <td><%= booking.address %></td>
+  <td><%= booking.booked_date %></td>
   <td><%= booking.start_time %></td>
   <td><%= booking.end_time %></td>
   <td><%= booking.field_type_name %></td>
@@ -9,7 +10,24 @@
     </div>
   </td>
   <td><%= "#{map_with_time_of_day(booking.prices).price} #{Settings.CURRENCY}" %></td>
-  <td>
-    <%= button_to t("button.delete"), booking_path(booking), class: "btn btn-danger", method: :delete %>
-  </td>
+  <%= render_booking_status(booking) %>
 </tr>
+<div class=<%= "modal fade" %> id="modal-<%=booking.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-black" id="exampleModal123"><%= t("button.delete") %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= t("confirm_message") %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t("button.cancel") %></button>
+        <%= button_to t("button.confirm"), booking_path(booking), class: "btn btn-primary save-button", method: :delete, data: booking.id %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -46,10 +46,6 @@ en:
     email: "Email"
     phone: "Phone Number"
 
-  booking:
-    delete_success: "Booking has been deleted"
-    delete_fail: "Failed to delete booking"
-
   admin:
     introduce: "This is the admin page"
     dashboard: "Dashboard"
@@ -118,3 +114,6 @@ en:
   comment:
     comment_success: "Comment has been created"
     comment_fail: "Comment fail"
+
+  ago: "ago"
+  confirm_message: "Are you sure to delete this ?"
