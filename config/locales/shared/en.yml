@@ -20,6 +20,9 @@ en:
     reviews: "Reviews"
     comment: "Comment"
     replies: "Replies"
+    cancel: "Cancel"
+    confirmed: "Confirmed"
+    rejected: "Rejected"
 
   model:
     user:

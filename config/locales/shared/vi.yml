@@ -20,6 +20,9 @@ vi:
     reviews: "Đánh giá"
     comment: "Bình luận"
     replies: "Trả lời"
+    cancel: "Hủy bỏ"
+    confirmed: "Xác nhận"
+    rejected: "Từ chối"
 
   model:
     user:

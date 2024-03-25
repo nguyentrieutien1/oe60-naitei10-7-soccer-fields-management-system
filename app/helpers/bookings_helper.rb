@@ -7,4 +7,20 @@ module BookingsHelper
       booking.confirmed? ? :success : :danger
     end
   end
+
+  def format_booking_created_at(booking)
+    "#{booking.created_at.to_time.strftime("%d/%m/%Y")} #{booking.created_at.to_time.strftime("%H:%M")}"
+  end
+
+  def render_booking_status(booking)
+    content_tag(:td) do
+      if booking.pending?
+        concat(content_tag(:button, t("button.cancel"), class: "btn btn-primary", type: "button", data: { toggle: "modal", target: "#{"#modal-"+"#{booking.id}"}" }))
+      elsif booking.confirmed?
+        concat(content_tag(:span,  t("button.confirm"), class: "badge badge-success"))
+      else
+        concat(content_tag(:span, t("button.rejected"), class: "badge badge-danger"))
+      end
+    end
+  end
 end

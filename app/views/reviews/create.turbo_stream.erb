@@ -1,3 +1,6 @@
-<%= turbo_stream.prepend "review" do %>
+<%= turbo_stream.append "review" do %>
   <%= render @review %>
+<% end %>
+<%= turbo_stream.update "form_create_review" do %>
+  <%= render partial: "field_types/form" %>
 <% end %>
