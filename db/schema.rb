@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_20_093724) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_26_064101) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -54,9 +54,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_20_093724) do
     t.integer "status"
     t.bigint "user_id", null: false
     t.bigint "field_type_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", null: false
-    t.date "booked_date"
+    t.string "booked_date"
     t.bigint "price_id"
     t.index ["field_type_id"], name: "index_bookings_on_field_type_id"
     t.index ["id"], name: "index_bookings_on_id"
@@ -87,7 +87,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_20_093724) do
 
   create_table "field_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "field_type_name", limit: 50
-    t.boolean "is_availible"
+    t.boolean "is_availible", default: true
     t.bigint "field_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

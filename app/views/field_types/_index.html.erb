@@ -11,12 +11,16 @@
             <h5 class="card-title text-black"><%= "#{@field_type.field_type_name } - #{@field_type.field_address} - #{@field_type.field_phone_number}" %></h5>
             <p class="card-text text-black"><%= @field_type.field_description %></p>
             <div class="mt-5 d-flex justify-content-between align-items-center">
-             <div class="">
-               <strike><%= "#{map_with_time_of_day(@field_type.prices).price.to_f + 197} #{Settings.CURRENCY}" %></strike>
-               <h5 class="card-text text-black"><%= "#{map_with_time_of_day(@field_type.prices).price} #{Settings.CURRENCY}" %></h5>
-             </div>
-              <div class="fa-regular fa-comment">
-                <%= "#{@field_type.reviews.count} reviews" %>
+              <div class="">
+                <strike><%= "#{map_with_time_of_day(@field_type.prices).price.to_f + 197} #{Settings.CURRENCY}" %></strike>
+                <h5 class="card-text text-black"><%= "#{map_with_time_of_day(@field_type.prices).price} #{Settings.CURRENCY}" %></h5>
+              </div>
+              <div class="d-flex align-items-center">
+                <div class="fa-regular fa-comment mr-2">
+                </div>
+                <div id="review-count">
+                  <%= "#{@field_type.reviews.count} reviews" %>
+                </div>
               </div>
             </div>
           </div>
@@ -52,16 +56,48 @@
                 <h3><%= t("field_types.booking_time") %></h3>
               </div>
               <div>
-                <% booking_hours.each do |time| %>
-                  <div class="<%= "btn btn-#{time[:booked] ? "danger" : "white"} col-2 m-2" %>">
-                    <%= button_to "#{time[:start_time]} - #{time[:end_time]}", bookings_path, method: :post, params: {
-                      start_time: time[:start_time],
-                      end_time: time[:end_time],
-                      field_type_id: @field_type.id,
-                      id: @field_type.id,
-                      price_id: map_with_time_of_day(@field_type.prices).id
-                    }, class: "btn btn-white" %>
-                  </div>
+                <% booking_hours.each_with_index do |time, index| %>
+                  <% if time[:booked] %>
+                    <div class="<%= "btn btn-#{time[:booked] ? "danger" : "white"} col-2 m-2" %>">
+                      <%= button_to "#{time[:start_time]} - #{time[:end_time]}" , bookings_path, method: :post, params: {
+                        start_time: time[:start_time],
+                        end_time: time[:end_time],
+                        field_type_id: @field_type.id,
+                        id: @field_type.id,
+                        price_id: map_with_time_of_day(@field_type.prices).id
+                      }, class: "btn btn-danger" %>
+                    </div>
+                  <% else %>
+                    <div class="<%= "btn btn-#{time[:booked] ? "danger" : "white"} col-2 m-2" %>">
+                      <button type="button" class="btn btn-white" data-toggle="modal" data-target="#slot-<%= index %>">
+                        <%= "#{time[:start_time]} - #{time[:end_time]}" %>
+                      </button>
+                      <div class="modal fade" id="slot-<%= index %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="text-black" id="exampleModalLongTitle">Do you want book this slot ?</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <%= button_to "Ok", bookings_path, method: :post, params: {
+                                start_time: time[:start_time],
+                                end_time: time[:end_time],
+                                field_type_id: @field_type.id,
+                                id: @field_type.id,
+                                price_id: map_with_time_of_day(@field_type.prices).id
+                              }, class: "btn btn-primary" %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+
+
                 <% end %>
               </div>
             </div>

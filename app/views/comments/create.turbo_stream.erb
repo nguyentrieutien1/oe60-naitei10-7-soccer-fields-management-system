@@ -8,3 +8,7 @@
     <%= @review.comments.count %>
   </div>
 <% end %>
+
+<%= turbo_stream.update "comment-form-#{@dom_id}" do %>
+  <%= render partial: "comments/comment_form", locals: {review: @review} %>
+<% end %>

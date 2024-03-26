@@ -7,7 +7,7 @@ class Booking < ApplicationRecord
     canceled: 3
   }, _default: :pending
 
-  attribute :booked_date, :date, default: -> { Date.current }
+  attribute :booked_date, :string, default: -> { Time.now }
 
   belongs_to :user
   belongs_to :field_type

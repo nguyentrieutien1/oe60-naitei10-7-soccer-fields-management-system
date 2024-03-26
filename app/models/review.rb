@@ -6,4 +6,6 @@ class Review < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   scope :reviews_newest_by, ->(field_type_ids) { where(field_type_id: field_type_ids)}
+
+  attribute :rating, :integer, default: -> { 5 }
 end

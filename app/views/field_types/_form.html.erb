@@ -2,10 +2,16 @@
   <input id="selected" name="field_type_id" type="hidden" value="<%= @field_type.id %>"/>
   <input id="selected" name="field_type_id" type="hidden" value="<%= @field_type.id %>"/>
   <label for="exampleFormControlTextarea1"></label>
-  <div class="position-relative">
-    <div class="entering d-none h5 text-white">Entering...</div>
+  <div>
     <textarea class="form-control text-white border-success" id="review-input" rows="3" name="content">
   </textarea>
+    <div class="load-wrapp d-none">
+      <div class="load-3">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
   </div>
   <button type="submit" class="btn btn-success my-3 float-right" id="create-review"><%= t("button.reviews") %></button>
 <% end %>
@@ -21,14 +27,13 @@
         })
 
         const review_input = document.querySelector("#review-input");
-        const spinner = document.querySelector(".entering")
+        const spinner = document.querySelector(".load-wrapp")
         review_input.addEventListener("keyup", function (event) {
             const {value} = event.target
-            if(value.length > 0) {
+            if (value.length > 0) {
                 spinner.classList.remove("d-block")
                 spinner.classList.add("d-block")
-            }
-            else {
+            } else {
                 spinner.classList.add("d-block")
                 spinner.classList.remove("d-block")
             }

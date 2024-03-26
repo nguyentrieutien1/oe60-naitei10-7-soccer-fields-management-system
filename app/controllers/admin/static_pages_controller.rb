@@ -17,13 +17,15 @@ module Admin
       respond_to do |format|
         if @booking.update(status: :confirmed)
           BookingMailer.booking_accepted_email(@booking).deliver_now
-          format.html { redirect_to root_path, notice: t("admin.bookings.success") }
+          flash[:success] = t("admin.bookings.success")
+          redirect_to admin_static_pages_path
         else
-          format.html { redirect_to admin_static_pages_path, notice: t("admin.bookings.fail") }
+          flash[:danger] = t("admin.bookings.fail")
+          redirect_to root_path
         end
         format.turbo_stream
-        bookings_get
       end
+      bookings_get
     end
 
     def pending
@@ -42,9 +44,11 @@ module Admin
       respond_to do |format|
         if @booking.update(status: :canceled)
           BookingMailer.booking_rejected_email(@booking).deliver_now
-          format.html { redirect_to admin_static_pages_path, notice: t("admin.cancel.success") }
+          flash[:success] = t("admin.bookings.success")
+          redirect_to admin_static_pages_path
         else
-          format.html { redirect_to admin_static_pages_path, notice: t("admin.cancel.fail") }
+          flash[:danger] = t("admin.bookings.fail")
+          redirect_to root_path
         end
         format.turbo_stream
       end
@@ -55,7 +59,7 @@ module Admin
 
     def bookings
       session[:status_filter] = params[:status_filter]
-      @bookings = current_user.fields.joins(field_types: :bookings).select("*")
+      @bookings = current_user.fields.joins(field_types: { bookings: :price }).select("bookings.id as booking_id, fields.*, field_types.*, bookings.*, prices.*")
 
       @status_filter = session[:status_filter]
       if @status_filter.present?

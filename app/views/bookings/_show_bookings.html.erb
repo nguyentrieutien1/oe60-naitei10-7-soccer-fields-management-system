@@ -1,13 +1,27 @@
 <div class="col-10 m-auto">
-  <div class="title-section">
+  <div class="title-section d-flex align-items-center justify-content-between">
     <h2 class="heading"><%= t("booking.booking_history_list") %></h2>
+    <div class="">
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <div class="spinner-border text-primary" role="status"></div>
+        <div class="">Pending</div>
+      </div>
+      <div class="d-flex align-items-center justify-content-between  mb-2">
+        <div class="spinner-border text-success" role="status"></div>
+        <div class="">Confirmed</div>
+      </div>
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <div class="spinner-border text-danger" role="status"></div>
+        <p>Reject</p>
+      </div>
+    </div>
   </div>
   <table class="table text-white">
     <thead>
     <tr>
       <th scope="col"><%= t("field_attribute.name") %></th>
       <th scope="col"><%= t("field_attribute.address") %></th>
-      <th scope="col"><%= t("email.booking_accepted.booked_date") %></th>
+      <th scope="col">Booked date</th>
       <th scope="col"><%= t("field_attribute.start_time") %></th>
       <th scope="col"><%= t("field_attribute.end_time") %></th>
       <th scope="col"><%= t("field_attribute.field_type") %></th>
