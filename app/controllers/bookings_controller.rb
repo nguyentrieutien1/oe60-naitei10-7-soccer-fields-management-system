@@ -22,11 +22,10 @@ class BookingsController < ApplicationController
       if @booking.destroy
         current_user.send_cancel_booking_success_email
         flash[:success] = t("booking.delete_success")
-        format.html { redirect_to root_path}
       else
         flash[:danger] = t("booking.delete_fail")
-        format.html { redirect_to root_path }
       end
+      format.html { redirect_to root_path }
       format.turbo_stream
     end
   end

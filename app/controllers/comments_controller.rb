@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new comment_params
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to field_path, notice: t("comment.comment_success") }
+        format.html { redirect_to root_path, notice: t("comment.comment_success") }
       else
-        format.html { redirect_to field_path, notice: t("comment.comment_fail") }
+        format.html { redirect_to root_path, notice: t("comment.comment_fail") }
       end
       format.turbo_stream
     end
