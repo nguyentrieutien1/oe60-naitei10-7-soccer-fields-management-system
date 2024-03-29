@@ -7,9 +7,9 @@ class FavoriteFieldTypesController < ApplicationController
       @favorite = current_user.favorite_field_types.new(field_type_id: params[:field_type_id])
       respond_to do |format|
         if @favorite.save
-          format.html { redirect_to field_path, notice: t("fields.favorite_success") }
+          format.html { redirect_to root_path, notice: t("fields.favorite_success") }
         else
-          format.html { redirect_to field_path, notice: t("fields.favorite_fail") }
+          format.html { redirect_to root_path, notice: t("fields.favorite_fail") }
         end
         format.turbo_stream
       end
