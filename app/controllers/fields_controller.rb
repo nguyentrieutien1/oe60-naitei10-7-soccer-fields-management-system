@@ -6,10 +6,6 @@ class FieldsController < ApplicationController
 
   def show; end
 
-  def index
-    @pagy, @fields = pagy Field.all, items: Settings.PERPAGE_8
-  end
-
   private
 
   def load_field

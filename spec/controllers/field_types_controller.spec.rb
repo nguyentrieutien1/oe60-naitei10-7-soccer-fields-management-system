@@ -2,7 +2,8 @@
 require "rails_helper"
 
 RSpec.describe FieldTypesController, type: :controller do
-  let(:field_type) { create(:field_type) }
+  let(:field) { FactoryBot.create(:field) }
+  let(:field_type) { FieldType.create(FactoryBot.attributes_for(:field_type).merge(field_id: field.id)) }
 
   describe "GET show" do
     context "when the field type exists" do

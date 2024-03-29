@@ -5,7 +5,7 @@ RSpec.describe ApplicationController, type: :controller do
   describe "#switch_language" do
     it "sets session locale" do
       get :switch_language, params: { locale: :en }
-      expect(session[:locale]).to eq(:en)
+      expect(session[:locale]).to eq("en")
     end
 
     it "redirects back to previous page" do

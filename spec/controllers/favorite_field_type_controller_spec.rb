@@ -3,7 +3,8 @@ require "rails_helper"
 
 RSpec.describe FavoriteFieldTypesController, type: :controller do
   let(:user) { create(:user) }
-  let(:field_type) { create(:field_type) }
+  let(:field) { FactoryBot.create(:field) }
+  let(:field_type) { FieldType.create(FactoryBot.attributes_for(:field_type).merge(field_id: field.id)) }
   let(:dom_id) { "favorite_#{SecureRandom.uuid}" }
 
   before do
