@@ -8,9 +8,15 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.new comment_params
+    @is_show_comment_quantity = false
     respond_to do |format|
       if @comment.save
-        @review.comments << @comment
+        if @comment.parent_comment_id
+          @is_show_comment_quantity = false
+        else
+          @review.comments << @comment
+          @is_show_comment_quantity = true
+        end
         format.html { redirect_to field_path, notice: t("comment.comment_success") }
       else
         format.html { redirect_to field_path, notice: t("comment.comment_fail") }

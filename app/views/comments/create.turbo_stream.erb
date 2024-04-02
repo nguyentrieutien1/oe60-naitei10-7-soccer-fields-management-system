@@ -1,14 +1,16 @@
-<%= turbo_stream.append "comment-#{@dom_id}" do %>
+<%= turbo_stream.append "#{@is_show_comment_quantity ? "comment" : "replies"}-#{@dom_id}" do %>
   <%= render @comment %>
 <% end %>
-
-<%= turbo_stream.update "review-count-#{@dom_id}" do %>
-  <i class="fa-regular fa-comments h5 mr-2"></i>
-  <div class="h5">
-    <%= @review.comments.count %>
-  </div>
+<% if @is_show_comment_quantity %>
+  <%= turbo_stream.update "review-count-#{@dom_id}" do %>
+    <i class="fa-regular fa-comments h5 mr-2"></i>
+    <div class="h5">
+      <%= @review.comments.count %>
+    </div>
+  <% end %>
+  <%= turbo_stream.update "comment-form-#{@dom_id}" do %>
+    <%= render partial: "comments/comment_form", locals: {review: @review} %>
+  <% end %>
+  <% else %>
 <% end %>
 
-<%= turbo_stream.update "comment-form-#{@dom_id}" do %>
-  <%= render partial: "comments/comment_form", locals: {review: @review} %>
-<% end %>

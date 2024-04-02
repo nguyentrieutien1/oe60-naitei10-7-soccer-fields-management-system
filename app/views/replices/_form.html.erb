@@ -1,0 +1,7 @@
+<%= form_for comment, url: comments_path, method: :post do %>
+  <label for="exampleFormControlTextarea1"></label>
+  <textarea name="content" class="form-control text-white" id="exampleFormControlTextarea1" rows="3"></textarea>
+  <input id="selected" name="dom_id" type="hidden" value="<%= comment.id %>"/>
+  <input id="selected" name="parent_comment_id" type="hidden" value="<%= comment.id %>"/>
+  <button type="submit" class="btn btn-success mt-2 float-right"><%=t("button.replies") %></button>
+<% end %>

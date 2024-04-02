@@ -11,6 +11,7 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         @field_type.reviews << @review
+        session[:rating] = 5
         format.html { redirect_to field_path, notice: t("review.review_success") }
       else
 

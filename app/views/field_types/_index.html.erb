@@ -29,18 +29,7 @@
           <%= render @reviews %>
         </div>
         <div class="form-group mt-2">
-          <ul class="ratingW float-right row">
-            <% Settings.MAX_RATING.times do |i| %>
-              <li>
-                <a>
-                  <%= button_to review_path, method: :put, class: "bg-transparent", params: { rating: i + 1, field_type_id: @field_type.id } do %>
-                    <div class="star">
-                    </div>
-                  <% end %>
-                </a>
-              </li>
-            <% end %>
-          </ul>
+
           <div id="form_create_review">
             <%= render "form" %>
           </div>
