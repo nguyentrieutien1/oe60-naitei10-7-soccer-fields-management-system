@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
   enum role: {
     super_admin: 1,
     admin: 2,
@@ -10,19 +14,17 @@ class User < ApplicationRecord
   attribute :activated, :boolean, default: false
 
   has_many :bookings, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :delete_all
   has_many :reviews, dependent: :destroy
   has_many :favorite_field_types, dependent: :destroy
   has_many :fields, dependent: :destroy
-
-  has_secure_password
 
   validates :email, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :phone_number, presence: true
   validates :password, presence: true
-  validates_confirmation_of :password_digest
+  # validates_confirmation_of :password_digest
   validate :password_requirements_are_met, if: :password
 
   attr_accessor :activation_token
@@ -35,6 +37,10 @@ class User < ApplicationRecord
       .select("users.id, users.email, SUM(prices.price) AS total_amount")
       .group("users.id")
   }
+
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
 
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
@@ -53,9 +59,8 @@ class User < ApplicationRecord
   end
 
   def authenticated?(attribute, token)
-    digest_num = send("#{attribute}_digest")
+    digest_num = send("#{attribute}")
     return false unless digest_num.present?
-
     bcrypt_password = BCrypt::Password.new digest_num
     bcrypt_password === token
   end

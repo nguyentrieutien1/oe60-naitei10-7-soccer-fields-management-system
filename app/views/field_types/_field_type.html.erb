@@ -2,7 +2,7 @@
   <div class="custom-media d-block">
     <div class="img mb-4">
       <%= link_to field_type_path(field_type) do %>
-        <%= image_tag field_type.image if field_type.image.attached? %>
+        <img src="<%= asset_path("img_1.jpg") %>" alt="Image" class=" card-img-top" style="height: 150px; object-fit: cover">
       <% end %>
     </div>
     <div class="text">

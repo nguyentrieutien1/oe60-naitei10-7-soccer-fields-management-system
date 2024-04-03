@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in_user
-    return if logged_in?
+    return if user_signed_in?
 
     flash[:danger] = I18n.t("application.user.not_login")
     store_location

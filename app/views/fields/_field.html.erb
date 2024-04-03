@@ -1,7 +1,7 @@
 <div class="col-md-4 p-2">
   <div class="post-entry">
     <%= link_to field_path(field) do %>
-      <%= image_tag field.image if field.image.attached? %>
+      <img src="<%= asset_path("img_1.jpg")%>">
       <div class="caption">
         <div class="caption-inner">
           <h3 class="mb-3"><%= field.name %></h3>

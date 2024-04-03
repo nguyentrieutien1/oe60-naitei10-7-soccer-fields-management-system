@@ -22,7 +22,7 @@ module BookingsHelper
       if booking.pending?
         concat(content_tag(:button, t("button.cancel"), class: "btn btn-primary", type: "button", data: { toggle: "modal", target: "#{"#modal-"+"#{booking.id}"}" }))
       elsif booking.confirmed?
-        concat(content_tag(:span,  t("button.confirm"), class: "badge badge-success"))
+        concat(content_tag(:span,  t("button.confirmed"), class: "badge badge-success"))
       else
         concat(content_tag(:span, t("button.rejected"), class: "badge badge-danger"))
       end

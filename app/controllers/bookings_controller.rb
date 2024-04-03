@@ -3,10 +3,10 @@ class BookingsController < ApplicationController
   load_and_authorize_resource
 
   layout "guest"
-
-  before_action :logged_in_user, :load_bookings, only: %i(index destroy)
+  before_action :authenticate_user!, only: %i(index create destroy)
+  before_action  :load_bookings, only: %i(index destroy)
   before_action :check_booking_owner, :is_allow_cancel_booking, only: :destroy
-  before_action :logged_in_user, :load_field_type, :has_overlap, only: :create
+  before_action :load_field_type, :has_overlap, only: :create
 
   def index; end
 

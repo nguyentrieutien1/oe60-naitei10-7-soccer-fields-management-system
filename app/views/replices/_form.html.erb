@@ -1,7 +1,17 @@
 <%= form_for comment, url: comments_path, method: :post do %>
   <label for="exampleFormControlTextarea1"></label>
-  <textarea name="content" class="form-control text-white" id="exampleFormControlTextarea1" rows="3"></textarea>
+  <textarea name="content" class="form-control text-white" id="reply-input-<%=comment.id%>" rows="3"></textarea>
   <input id="selected" name="dom_id" type="hidden" value="<%= comment.id %>"/>
   <input id="selected" name="parent_comment_id" type="hidden" value="<%= comment.id %>"/>
-  <button type="submit" class="btn btn-success mt-2 float-right"><%=t("button.replies") %></button>
+  <button type="submit" class="btn btn-success mt-2 float-right" data-id="<%=comment.id %>" onclick="handle_clean_value_input(<%=comment.id %>)"><%=t("button.replies") %></button>
 <% end %>
+
+<script>
+  function handle_clean_value_input(comment_id) {
+      console.log(comment_id)
+      const input = document.querySelector(`#reply-input-${comment_id}`)
+      setTimeout(() => {
+          input.value = ""
+      }, 100)
+  }
+</script>

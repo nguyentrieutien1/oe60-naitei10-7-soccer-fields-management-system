@@ -20,13 +20,13 @@
                   <%= t("header.settings") %>
                 </button>
                 <div class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
-                  <% if logged_in? %>
+                  <% if user_signed_in? %>
                     <%= link_to t("header.profile"), user_path(current_user) %>
                     <%= link_to t("header.booking_history"), bookings_path %>
                     <%= link_to t("header.favorite_list"), favorite_field_types_path %>
-                    <%= button_to t("header.log_out"), logout_path, method: :delete %>
+                    <%= button_to t("header.log_out"), destroy_user_session_path, method: :delete %>
                   <% else %>
-                    <%= link_to t("sessions.sign_in_title"), signin_path %>
+                    <%= link_to t("sessions.sign_in_title"), new_user_session_path %>
                   <% end %>
                 </div>
               </div>

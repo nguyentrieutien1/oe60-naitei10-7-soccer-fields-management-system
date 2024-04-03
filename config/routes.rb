@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { registrations: "registrations"}
+
   # Home path
   root "static_pages#home"
-
   # Auth path
   scope :auth do
     get "signup", to: "registrations#new"

@@ -1,7 +1,7 @@
 <tr>
   <th scope="row"><%= booking.field_type_name %></th>
   <td><%= booking.address %></td>
-  <td><%= booking.booked_date %></td>
+  <td><%= format_booking_booked_date(booking) %></td>
   <td><%= booking.start_time %></td>
   <td><%= booking.end_time %></td>
   <td><%= booking.field_type_name %></td>

@@ -2,10 +2,8 @@
   <% Settings.MAX_RATING.times do |i| %>
     <li>
       <a>
-        <%= button_to review_path(i), method: :put, class: "bg-transparent", params: { rating: i + 1, field_type_id: @field_type.id } do %>
           <div class="star">
           </div>
-        <% end %>
       </a>
     </li>
   <% end %>
@@ -28,29 +26,42 @@
   <button type="submit" class="btn btn-success my-3 float-right" id="create-review"><%= t("button.reviews") %></button>
 <% end %>
 <script>
+
     setTimeout(() => {
         const create_review_btn = document.querySelector("#create-review")
         const review_container = document.querySelector("#review");
+        const review_input = document.querySelector("#review-input");
+        review_input.value = ""
+        create_review_btn.style.display = "none"
+        if(review_input.value) {
+
+        }
         create_review_btn.addEventListener("click", () => {
-            setTimeout(() => {
-                console.log(review_container)
-                review_container.scrollTop = review_container.scrollHeight
-            }, 100)
+            if(!review_input.value) {
+                alert("Content not be empty !")
+            }
+            else {
+                setTimeout(() => {
+                    review_container.scrollTop = review_container.scrollHeight
+                }, 100)
+            }
         })
 
-        const review_input = document.querySelector("#review-input");
         const spinner = document.querySelector(".load-wrapp")
         review_input.addEventListener("keyup", function (event) {
             const {value} = event.target
             if (value.length > 0) {
+
+                create_review_btn.style.display = "block"
                 spinner.classList.remove("d-block")
                 spinner.classList.add("d-block")
             } else {
                 spinner.classList.add("d-block")
                 spinner.classList.remove("d-block")
+                create_review_btn.style.display = "none"
             }
         })
-    }, 1000)
+    }, 100)
 
     function ratingStar(star) {
         star.click(function () {

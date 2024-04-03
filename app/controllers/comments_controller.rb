@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
+  load_and_authorize_resource
+
   layout "guest"
 
   before_action :logged_in_user, :assign_dom_each_comment, :load_review, only: :create

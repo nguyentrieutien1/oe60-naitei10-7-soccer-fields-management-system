@@ -1,0 +1,27 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <section class="sign-in ">
+    <div class="container">
+      <div class="signin-content border mt-5 rounded">
+        <div class="signin-image text-center">
+          <img class="rounded mb-3" src="<%= asset_path("sign-in.jpg") %>" alt="Example Image">
+        </div>
+        <div class="signin-form d-flex flex-column justify-content-center">
+          <h2 class="form-title"><%= t("sessions.sign_in_title") %></h2>
+            <div class="form-group">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+            <div class="form-group">
+              <div class="field">
+                <%= f.password_field :password, autocomplete: "current-password" %>
+              </div>
+            </div>
+            <div class="actions">
+              <%= f.submit "Log in", class: "rounded mb-3 btn btn-success"%>
+            </div>
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+

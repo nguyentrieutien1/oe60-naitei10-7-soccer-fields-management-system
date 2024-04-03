@@ -34,7 +34,7 @@ class SessionsController < ApplicationController
   end
 
   def handle_failed_login
-    return if @user.authenticate(params[:password])
+    return if @user&.authenticate(params[:password])
 
     flash.now[:danger] = t("sessions.create.error_login_message")
     render :new, status: :unprocessable_entity
