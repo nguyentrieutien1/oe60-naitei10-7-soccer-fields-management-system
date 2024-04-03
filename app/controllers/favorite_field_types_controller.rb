@@ -19,6 +19,7 @@ class FavoriteFieldTypesController < ApplicationController
           else
             format.html { redirect_to field_path, notice: t("fields.favorite_fail") }
           end
+          flash[:warning] = "Unfollow the field type successful"
           format.turbo_stream
         end
       else
@@ -29,6 +30,7 @@ class FavoriteFieldTypesController < ApplicationController
           else
             format.html { redirect_to field_path, notice: t("fields.favorite_fail") }
           end
+          flash[:success] =  t("fields.favorite_success")
           format.turbo_stream
         end
       end

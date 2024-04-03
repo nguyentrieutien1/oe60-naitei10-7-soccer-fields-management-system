@@ -20,6 +20,8 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
+  config.hosts << "datlichdabong.online"
+    config.hosts << "datlichdabong.online"
 
   config.active_storage.service = :local
 

@@ -1,16 +1,11 @@
 # frozen_string_literal: true
 
 class AccountsController < ApplicationController
-  before_action :load_user, :check_activation, only: :activations
+  before_action :load_user, only: :activations
 
   def activations
     handle_error_and_redirect do
-      if @user.activated
-        flash[:info] = t "email.activation.activated"
-      else
-        @user.active
-        flash[:success] = t "email.activation.activated"
-      end
+      flash[:info] = t "email.activation.activated"
       redirect_to root_path
     end
   end
