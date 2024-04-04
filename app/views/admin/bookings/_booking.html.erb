@@ -4,7 +4,6 @@
   <td><%= format_booking_booked_date(booking) %></td>
   <td><%= booking.start_time %></td>
   <td><%= booking.end_time %></td>
-  <td><%= booking.field_type_name %></td>
   <td>
     <div class="spinner-border text-<%= if booking.status == 1
                                           :primary
