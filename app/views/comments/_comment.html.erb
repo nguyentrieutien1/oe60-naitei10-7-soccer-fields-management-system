@@ -5,12 +5,12 @@
       <div>:<%= comment.user.full_name %></div>
     </div>
   </div>
-  <h5><%= comment.content %></h5>
+  <div class="d-flex align-items-center justify-content-between"><h5><%= comment.content %></h5>
+   <%= time_ago_in_words comment.created_at %> ago</div>
 </div>
 <div class="col">
   <div class="collapse multi-collapse" id="multiCollapseExample<%= comment.id %>">
     <div id="replies-<%= comment.id %>">
-      <%= render comment.replies %>
     </div>
     <div class="card-body">
       <div class="form-group" id="reply-form-<%= comment.id %>">

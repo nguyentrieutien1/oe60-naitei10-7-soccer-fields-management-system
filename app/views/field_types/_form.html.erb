@@ -2,7 +2,7 @@
   <% Settings.MAX_RATING.times do |i| %>
     <li>
       <a>
-          <div class="star">
+          <div class="star" onclick="handle_set_rating(<%=i+1%>)">
           </div>
       </a>
     </li>
@@ -10,6 +10,7 @@
 </ul>
 <%= form_for @field_type, url: reviews_path, method: :post, data: { turbo_stream: true } do %>
   <input id="selected" name="field_type_id" type="hidden" value="<%= @field_type.id %>"/>
+  <input id="rating" name="rating" type="hidden" value="5"/>
   <input id="selected" name="field_type_id" type="hidden" value="<%= @field_type.id %>"/>
   <label for="exampleFormControlTextarea1"></label>
   <div>
@@ -26,24 +27,25 @@
   <button type="submit" class="btn btn-success my-3 float-right" id="create-review"><%= t("button.reviews") %></button>
 <% end %>
 <script>
-
+    function handle_set_rating(rating) {
+      const rating_element = document.querySelector("#rating")
+      rating_element.value = rating
+    }
     setTimeout(() => {
         const create_review_btn = document.querySelector("#create-review")
         const review_container = document.querySelector("#review");
         const review_input = document.querySelector("#review-input");
         review_input.value = ""
         create_review_btn.style.display = "none"
-        if(review_input.value) {
-
-        }
+        
         create_review_btn.addEventListener("click", () => {
             if(!review_input.value) {
                 alert("Content not be empty !")
             }
             else {
                 setTimeout(() => {
-                    review_container.scrollTop = review_container.scrollHeight + 1000
-                }, 100)
+                    review_container.scrollTop = review_container.scrollHeight
+                }, 500)
             }
         })
 

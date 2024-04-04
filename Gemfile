@@ -44,6 +44,11 @@ gem "caxlsx_rails"
 
 gem "devise"
 
+gem "foreman"
+
+gem "sidekiq"
+
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem "byebug"

@@ -21,12 +21,15 @@
                 </button>
                 <div class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
                   <% if user_signed_in? %>
-                    <%= link_to t("header.profile"), user_path(current_user) %>
-                    <%= link_to t("header.booking_history"), bookings_path %>
-                    <%= link_to t("header.favorite_list"), favorite_field_types_path %>
-                    <%= button_to t("header.log_out"), destroy_user_session_path, method: :delete %>
+                    <p><%= link_to t("header.profile"), user_path(current_user) %></p>
+                    <% if current_user.admin? %>
+                    <p><%= link_to "Dashboard", admin_static_pages_path %> </p>
+                    <% end%>
+                    <p><%= link_to t("header.booking_history"), bookings_path %></p>
+                    <p><%= link_to t("header.favorite_list"), favorite_field_types_path %></p>
+                    <p><%= button_to t("header.log_out"), destroy_user_session_path, method: :delete, class: "btn btn-danger text-white" %></p>
                   <% else %>
-                    <%= link_to t("sessions.sign_in_title"), new_user_session_path %>
+                    <p><%= link_to t("sessions.sign_in_title"), new_user_session_path %></p>
                   <% end %>
                 </div>
               </div>

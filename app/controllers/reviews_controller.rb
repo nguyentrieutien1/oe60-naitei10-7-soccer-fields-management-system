@@ -4,13 +4,9 @@ class ReviewsController < ApplicationController
 
   before_action :logged_in_user, :booking_params, :load_field_type, only: %i(create update)
 
-  def update
-    session[:rating] = params[:rating]
-  end
-
   def create
     session[:rating] ||= 5
-    @review = current_user.reviews.new(field_type_id: params[:field_type_id], content: params[:content], rating: session[:rating])
+    @review = current_user.reviews.new(field_type_id: params[:field_type_id], content: params[:content], rating: params[:rating])
     respond_to do |format|
       if @review.save
         @field_type.reviews << @review
@@ -27,7 +23,7 @@ class ReviewsController < ApplicationController
   private
 
   def booking_params
-    params.permit :start_time, :end_time, :field_type_id, :price_id
+    params.permit :start_time, :end_time, :field_type_id, :price_id, :rating
   end
 
   def load_field_type

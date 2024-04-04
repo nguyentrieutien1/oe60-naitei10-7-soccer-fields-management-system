@@ -33,6 +33,6 @@ class ApplicationController < ActionController::Base
 
     flash[:danger] = I18n.t("application.user.not_login")
     store_location
-    redirect_to root_path
+    redirect_to new_user_session_path
   end
 end
