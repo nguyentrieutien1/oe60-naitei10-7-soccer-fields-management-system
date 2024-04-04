@@ -2,10 +2,10 @@
 class ReviewsController < ApplicationController
   load_and_authorize_resource
 
-  before_action :logged_in_user, :booking_params, :load_field_type, only: %i(create update)
+  before_action :logged_in_user, :booking_params, :load_field_type, only: :create
 
   def create
-    session[:rating] ||= 5
+    session[:rating] ||= 3
     @review = current_user.reviews.new(field_type_id: params[:field_type_id], content: params[:content], rating: params[:rating])
     respond_to do |format|
       if @review.save
