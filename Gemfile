@@ -24,8 +24,21 @@ gem "figaro"
 
 gem "mysql2"
 
+gem "htmlbeautifier"
+
+gem "bootstrap", "~> 4.0"
+
+gem "sassc-rails"
+
+gem "jquery-rails"
+
+gem "pagy"
+
+gem "rufus-scheduler"
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
+  gem "byebug"
 end
 
 group :development do
@@ -43,6 +56,8 @@ gem "bcrypt", "~> 3.1.7"
 
 gem "config"
 
-gem "bootstrap-sass", "3.4.1"
+gem "bootstrap-icons-helper"
 
-gem "sassc-rails"
+gem "font-awesome-sass"
+
+gem "faker"

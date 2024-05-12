@@ -1,0 +1,29 @@
+en:
+  application:
+    language:
+      en: "English"
+      vi: "Vietnamese"
+
+    server:
+      error_message: "Server is busy, let relax and comeback to action"
+
+    auth:
+      missing_login_message: "First, you need to login !"
+
+    admin:
+      introduce: "This is admin page"
+
+  admin:
+    introduce: "This is the admin page"
+
+  field_attribute:
+    name: "Field name"
+    price: "Price"
+    status: "Status"
+    address: "Address"
+    field_type: "Field Type"
+    start_time: "Start time"
+    end_time: "End time"
+
+    user:
+      is_not_admin: "You are not admin"

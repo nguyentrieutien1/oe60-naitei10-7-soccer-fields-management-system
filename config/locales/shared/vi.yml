@@ -1,0 +1,28 @@
+vi:
+  form:
+    errors: "Biểu mẫu chứa %{count} lỗi."
+    placeholder:
+      email: "Nhập email của bạn"
+      first_name: "Nhập tên của bạn"
+      last_name: "Nhập họ của bạn"
+      phone_number: "Nhập điện thoại của bạn"
+      password_digest: "Nhập mật khẩu của bạn"
+      password_confirmation: "Nhập xác nhận mật khẩu của bạn"
+
+  button:
+    register: "Đăng ký"
+    login: "Đăng nhập"
+    booking: "Đặt sân"
+    availible_field: "Còn sân"
+    inavailible_field: "Hết sân"
+    confirm: "Xác nhận"
+    delete: "Xóa"
+
+  model:
+    user:
+      not_found: "Không tìm thấy người dùng"
+      edit_error: "Bạn không thể chỉnh sửa tài khoản này"
+
+  controller:
+    user:
+      not_login: "Người dùng chưa đăng nhập"

@@ -1,0 +1,102 @@
+vi:
+  sessions:
+    sign_in_title: "Đăng nhập"
+
+  registrations:
+    sign_up_title: "Đăng ký"
+    remember_me: "Lưu thông tin đăng nhập"
+
+  header:
+    home: "Trang chủ"
+    settings: "Cài đặt"
+    profile: "Hồ sơ"
+    booking_history: "Lịch sử đặt sân"
+
+  home:
+    title: "Đặt chân ra sân bóng đá"
+    description: "Đặt sân bóng nhanh chóng và dễ dàng với ứng dụng đặt sân bóng đá. Tận hưởng sự tiện ích và linh hoạt khi bạn có thể chọn từ một loạt các sân bóng đá chất lượng cao trong khu vực của bạn."
+
+  fields:
+    title: "Danh sách sân bóng đá"
+    empty: "Không có loại trường nào được hiển thị"
+    search_placeholder: "Tìm kiếm tại đây"
+    favorite_success: "Yêu thích thành công"
+    favorite_fail: "Yêu thích thất bại"
+
+  field_types:
+    booking_time: "Thời gian đặt sân"
+    not_found: "Sân bóng không tìm thấy"
+    available_time_slots: "Các sân có sẵn"
+    inavailable_time_slots: "Sân đã đặt trước"
+    note: "Thể lệ cuộc chơi"
+    booking_field_success: "Đặt sân thành công"
+    field_infomation: "Thông tin sân"
+    action: "Hoạt động"
+
+  fields_detail:
+    title: "Chi tiết sân bóng"
+
+  footer:
+    title: "Mọi quyền được bảo lưu | Mẫu này được thực hiện bởi Tien + Mạnh"
+
+  users:
+    update_title: "Cập nhật"
+    profile: "Trang cá nhân"
+    information: "Thông tin cá nhân"
+    email: "Thư điện tử"
+    phone: "Số điện thoại"
+
+  admin:
+    introduce: "Đây là trang quản trị viên"
+    dashboard: "Bảng điều khiển"
+    field_manager: "Quản lý sân"
+    title_name: "Tên"
+    title_description: "Mô tả"
+    title_phone_number: "Số điện thoại"
+    title_address: "Địa chỉ"
+    title_actions: "Hành động"
+    delete: "Xóa"
+    add_field: "Thêm sân"
+    close: "Đóng"
+    field:
+      create: "Tạo mới"
+    static_pages:
+      accept: "Xác nhận"
+      reject: "Từ chối"
+
+  booking:
+    delete_success: "Lịch đặt sân đã bị xóa"
+    delete_fail: "Đặt sân thành công"
+    field:
+      create: "Tạo mới"
+    add_field: "Thêm sân bóng"
+    close: "Đóng"
+    my_account: "Tài khoản của tôi"
+    log_out: "Đăng xuất"
+
+    static_pages:
+      accept: "Xác nhận"
+      reject: "Hủy yêu cầu"
+      welcome: "Chào mừng đến với trang chính"
+      hello: "Xin chào %{full_name}, chào mừng bạn đã quay trở lại"
+      settings: "Cài đặt"
+      admin_page: "Trang chủ"
+
+  email:
+    booking_accepted:
+      subject: "Đơn đặt sân của bạn đã được chấp nhận"
+      greeting: "Xin chào %{user_name},"
+      message: "Chúng tôi rất vui thông báo rằng đơn đặt sân của bạn đã được chấp nhận. Dưới đây là chi tiết đơn đặt sân của bạn:"
+      field_name: "Tên sân"
+      booked_date: "Ngày đặt sân"
+      start_time: "Thời gian bắt đầu"
+      end_time: "Thời gian kết thúc"
+
+    booking_rejected:
+      subject: "Đơn đặt sân của bạn đã bị từ chối"
+      greeting: "Xin chào %{user_name},"
+      message: "Chúng tôi rất tiếc phải thông báo rằng đơn đặt sân của bạn đã bị từ chối. Dưới đây là thông tin chi tiết:"
+      field_name: "Tên sân"
+      booked_date: "Ngày đặt sân"
+      start_time: "Thời gian bắt đầu"
+      end_time: "Thời gian kết thúc"

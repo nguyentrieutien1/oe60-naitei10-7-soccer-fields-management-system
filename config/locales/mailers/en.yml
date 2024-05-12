@@ -1,0 +1,19 @@
+en:
+  email:
+    activation:
+      subject: "Check your email to active the account, please !"
+      active_now: "Active now"
+      activated: "Account activated"
+      deactivated: "Account deactivated"
+      title: "Activate Your Account"
+      welcome_text: "Hello"
+      content: "Thanks for signing up! To activate your account, please click the link below"
+      remind: "If you didn't sign up for our service, you can ignore this email"
+      booking: "Please check your email"
+
+    cancel_booking:
+      success: "Cancel booking success"
+
+    invalid_link: "Invalid activation link"
+
+    report: "Monthly Revenue Report"

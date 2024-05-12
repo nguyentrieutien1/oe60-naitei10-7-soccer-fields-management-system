@@ -1,0 +1,29 @@
+vi:
+  application:
+    language:
+      en: "Tiếng Anh"
+      vi: "Tiếng Việt"
+
+    server:
+      error_message: "Máy chủ đang bận, vui lòng thao tác sau ít phút nữa"
+
+    auth:
+      missing_login_message: "Trước tiên bạn cần phải đăng nhập !"
+
+    user:
+      is_not_admin: "Bạn không phải là admin"
+
+  admin:
+    introduce: "Đây là trang admin"
+
+  field_attribute:
+    name: "Tên sân"
+    price: "Giá"
+    status: "Trạng thái"
+    address: "Địa chỉ"
+    field_type: "Kiểu sân"
+    start_time: "Thời gian bắt đầu"
+    end_time: "Thời gian kết thúc"
+
+    user:
+      is_not_admin: "Bạn không phải là admin"

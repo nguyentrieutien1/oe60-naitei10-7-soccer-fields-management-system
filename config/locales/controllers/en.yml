@@ -1,0 +1,38 @@
+en:
+  application:
+    user:
+      not_login: "User needs to log in"
+      is_not_admin: "You are not an admin"
+
+  field_type:
+    overlap: "Cannot book the field at this time slot, please choose another time."
+
+  controller:
+    static_pages:
+      not_found_field: "No matching results found"
+
+  booking:
+    confirmed: "Booking has been confirmed, you cannot cancel"
+    canceled: "Booking has been canceled"
+    not_your: "This field does not belong to you, please cancel the correct field"
+
+  admin:
+    field:
+      create_success: "Field creation successful"
+      create_fail: "Field creation failed"
+      delete_success: "Field deletion successful"
+      delete_fail: "Field deletion failed"
+      field_not_found: "Field not found"
+      invalid: "Admin does not exist"
+      can_destroy: "This field already has bookings, you cannot delete it"
+
+    bookings:
+      success: "Successfully changed booking status"
+      fail: "Failed to change booking status"
+
+    cancel:
+      success: "Booking cancellation successful"
+      fail: "Booking cancellation failed"
+
+    booking:
+      not_found: "Booking not found"

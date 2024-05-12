@@ -36,3 +36,19 @@ Layout/IndentationWidth:
 
 Style/CaseEquality:
   Enabled: false
+
+Layout/TrailingWhitespace:
+  Enabled: false
+
+Style/StringLiteralsInInterpolation:
+  Enabled: false
+
+Naming/PredicateName:
+  Enabled: false
+
+Layout/EmptyLineAfterMagicComment:
+  Enabled: false
+
+Layout/LineLength:
+  Enabled: false
+

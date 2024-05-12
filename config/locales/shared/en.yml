@@ -1,0 +1,28 @@
+en:
+  form:
+    errors: "The form contains %{count} errors."
+    placeholder:
+      email: "Enter your email"
+      first_name: "Enter your first name"
+      last_name: "Enter your last name"
+      phone_number: "Enter your phone number"
+      password_digest: "Enter your password"
+      password_confirmation: "Enter your password confirmation"
+
+  button:
+    register: "Register"
+    login: "Login"
+    booking: "Booking"
+    availible_field: "Availible "
+    inavailible_field: "Inavailible "
+    confirm: "Confirm"
+    delete: "Delete"
+
+  model:
+    user:
+      not_found: "User not found"
+      edit_error: "You can not edit this account"
+
+  controller:
+    user:
+      not_login: "User is not login"
