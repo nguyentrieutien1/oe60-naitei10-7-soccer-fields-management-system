@@ -45,5 +45,4 @@ config/application.yml
 /log
 /tmp
 /vendor
-/config/database.yml
 config/credentials.yml.enc

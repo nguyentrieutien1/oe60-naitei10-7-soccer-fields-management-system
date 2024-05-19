@@ -9,7 +9,7 @@ class Ability
     elsif user.admin?
       can :manage, [Booking, Field, FieldType]
     elsif user.user?
-      can :read, [Field, FieldType]
+      can :read, [Field, FieldType, FavoriteFieldType]
       can :read, FavoriteFieldType, user_id: user.id
       can :update, User, id: user.id
       can %i[create destroy read], Booking , user_id: user.id

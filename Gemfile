@@ -22,7 +22,7 @@ gem "bootsnap", require: false
 
 gem "figaro"
 
-gem "mysql2"
+# gem "mysql2"
 
 gem "htmlbeautifier"
 
